@@ -34,7 +34,12 @@ client
 module.exports = client;
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'https://trello-frontend-j8a6.onrender.com',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
 const server = http.createServer(app);
 app.use(express.json());
 app.use((req, res, next) => {
